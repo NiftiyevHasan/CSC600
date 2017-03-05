@@ -29,6 +29,8 @@ int main(){
 	for (int index = 0; index < 16 && (reducedArray[index] !=0) ; index++){
 		cout << reducedArray[index] << " " ;
 	}
+	// move terminal cursor to new line
+	cout << endl;
 
 	return 0;
 }

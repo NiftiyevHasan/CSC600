@@ -12,9 +12,11 @@ your solution, and insert comments in your program. The solution should have tim
 complexity O(n).
  * ******************************/
 
-using namespace std;
+
 #include <iostream>
 #include <string>
+
+using namespace std;
 
 // A function to check longest sequence in an array
 // Assuming the valid Array will be given.
