@@ -20,6 +20,7 @@ int* threeLargetsElement(int* , int);
 
 int main(){
 
+	// test case given by instructor
 	int array[16] = {9,1,1,6,7,1,2,3,3,5,6,6,6,6,7,9};
 	int * reducedArray = new int[16];
 	int * maxList = threeLargetsElement(array,16);
@@ -32,7 +33,8 @@ int main(){
 	return 0;
 }
 
-
+// A function that reduce the size of array by removing 
+// largest three elements from the list.
 int* reduce(int * array , int * maxList, int size){
 
 	int* dummyArray = new int[size-3]; 
@@ -40,6 +42,7 @@ int* reduce(int * array , int * maxList, int size){
 
 	for (int index = 0; index < size; index++){
 		if (array[index] != maxList[0] && array[index] != maxList[1] && array[index] != maxList[2]){
+			// if an element is not one of maxList then add it to dummyArray and keep special index
 			dummyArray[dummyIndex++] = array[index];
 		}
 	}
@@ -49,12 +52,14 @@ int* reduce(int * array , int * maxList, int size){
 
 
 
-
+// created an array with three elements where
+// first , second and third elements are the respectively maximum
+//of array in a sorted form.
 int* threeLargetsElement(int* array, int size){
 
 	int* maxList = new int[3]();
 	
-
+		// iterate thorugh each element and find max of three
 	for (int index = 0; index < size ; index++){
 
 		if (array[index]> maxList[0]){
