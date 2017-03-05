@@ -51,12 +51,8 @@ void y(double x1, double y1 , double x2 , double y2 , double x3 , double y3){
 	else{
 
 		cout << " ======= Cramer's Coefficients  ======= " <<endl;
-		yCramers(x1,y1,x2,y2,x3,y3);
-
-		
+		yCramers(x1,y1,x2,y2,x3,y3);	
 	}
-
-
 
 }
 
@@ -92,7 +88,7 @@ void yCramers(double x1 , double y1 , double x2 , double y2 , double x3 , double
 	// As a requirement, orinting 40 equidistant x and relative y.
  	double segment = (x3 - x1) / 39 ; //subsection;
  	int counter = 1;
-		cout << "======= 40 equidistant points between x1 and x2 =======\n";
+		cout << "======= 40 equidistant points between x1 and x3 =======\n";
 	 for(double instance = x1; instance < x3; instance += segment, counter++){
         double Y = x * (instance * instance) + y * (instance) + z;
         cout << counter << ":\t(" << setprecision(2) << instance << " , " << setprecision(2) << fixed << Y << ")" << endl;
