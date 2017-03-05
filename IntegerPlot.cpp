@@ -15,18 +15,19 @@ characters of size 7x7, as in the following example for BigInt(170):
  
  * ******************************/
 
-using namespace std;
+
 #include <iostream>
 #include <string>
 #define SIZE 7
 
+using namespace std;
 
 void bigInt (int);
-string digitPrint(int);
+string digitPrint(int[],int);
 
 int main (){
  
- bigInt(170);
+ bigInt(1234567890);
 
  return 0;
 
@@ -39,119 +40,47 @@ void bigInt (int number){
 	int reverseDigits[SIZE];
 	int number_length = 0;
 
-	while(number){
-
-		reverseDigits[++number_length] = number % 10;
-		number /= 10;
+  // breaking it up into each digit and save them in array in reverse order
+	while(number != 0 ){
+    //last digit
+		reverseDigits[number_length++] = number % 10;
+		number /= 10; // move on to next digit 
 	}
 
-	for (int digit = number_length - 1; digit >= 0 ; digit --){
-
-		cout << digitPrint(reverseDigits[digit]);
-	}
+		cout << digitPrint(reverseDigits,number_length) << "\n" << endl;
+	
 }
 
-string digitPrint(int digit){
+// function that passes structured digits to print
+string digitPrint(int array[], int length){
 
-	string output = NULL;
+  // sample dataset
+  string digitMatrix[SIZE][10] = {
+        {" @@@@@ ","  @@   "," @@@@@@"," @@@@@@","   @@@@","@@@@@@","  @@@@  ","@@@@@@@","@@@@@@@","@@@@@@@"},
+        {"@@   @@"," @@@   ","@    @@","@    @@","  @@ @@","@@     "," @@    ","     @@","@@   @@","@    @@"},
+        {"@@   @@","  @@   ","      @","     @@"," @@  @@","@@     ","@@     ","    @@ ","@@   @@","@    @@"},
+        {"@@   @@","  @@   ","  @@@@@"," @@@@@@","@@   @@","@@@@@@@","@@     ","   @@  ","@@@@@@@"," @@@@@@"},
+        {"@@   @@","  @@   "," @     ","     @@","@@@@@@@","     @@","@@@@@@@","  @@   ","@@   @@","     @@"},
+        {"@@   @@","  @@   "," @@    ","@    @@","     @@","     @@","@    @@"," @@    ","@@   @@","     @@"},
+        {" @@@@@ ","@@@@@@ "," @@@@@@","@@@@@@@","     @@","@@@@@@@"," @@@@@@","@@     ","@@@@@@@"," @@@@@@"}             
+    };
 
-	switch (digit) {
+  string output = "";
+  string number= "";
 
-		case 0: 
-				output = "   @@@@@"
-						  +"@@@@@@@"
-						  +"@@   @@"
-						  +"@@   @@"
-					      +"@@   @@"
-					      +"@@@@@@@"
-					       +"@@@@@   " ; break ;
+      //iterate through each line
+  for (int line = 0; line < SIZE; line++){
+    // to have each line printed in nice format
+    number += "\n" ;
+    //iterate though each digit
+    for (int digit = length - 1; digit >= 0 ; digit --){
 
-		case 1: 
-				output = "     @@"
-						  + "@@@@"
-						  +   "@@"
-						  +   "@@"
-						  +   "@@"
-						  +   "@@"
-						  +"@@@@@@@  " ; break ;
+      output = digitMatrix[line][array[digit]] + " ";
+      number += output;
+    }
+  }
 
-		case 2: 
-				output = "   @@@@@ "
-                          +"@@   @@"
-                              +"@@@"
-                             +"@@@" 
-                            +"@@"   
-                          +"@@@@@@@"
-                          +"@@@@@@@  " ; break ;
-		
-		case 3: 
-				output = "   @@@@@" 
-                          +"@@   @@"
-                               +"@@"
-                             +"@@@" 
-                             +"@@@@"
-                          +"@@   @@"
-                           +"@@@@@ " ; break ;
-		
-		case 4: 
-				output = "      @@ "
-                             +"@@@ "
-                            +"@ @@ "
-                           +"@  @@ "
-                          +"@@@@@@@"
-                              +"@@ "
-                             +"@@@@ " ; break ;
-
-		case 5: 
-				output = "  @@@@@@@"
-                          +"@@ "    
-                          +"@@@@@@ "
-                               +"@@"
-                               +"@@"
-                          +"@@   @@"
-                           +"@@@@@   " ; break ;
-		
-		case 6: 
-				output = "  @@@@@@"
-                          +"@@    @"
-                          +"@@  "   
-                          +"@@@@@@ "
-                          +"@@   @@"
-                          +"@@   @@"
-                          +" @@@@@   " ; break ;
-
-		case 7: 
-				output = "  @@@@@@"
-                          +"@@   @@"
-                          +"    @@" 
-                          +"   @@"  
-                          +"  @@"   
-                          +"@@@"    
-                          +"@@       " ; break ;
-
-        case 8: 
-        		output = "   @@@@@ "
-                          +"@@   @@"
-                          +"@@   @@"
-                          +" @@@@@ "
-                          +"@@   @@"
-                          +"@@   @@"
-                          +" @@@@@   " ; break ;
-		case 9: 
-				output = "   @@@@@ "
-                          +"@@   @@"
-                          +"@@   @@"
-                          +" @@@@@ "
-                          +"     @@"
-                          +"@@   @@"
-                           +"@@@@@   " ; break ;
-	
-	    default: 
-	    		cout << "Invalid Digit !" ; break ;
-
-	}
-
-	return output;
+    return number;
 }
 
 
