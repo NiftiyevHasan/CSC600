@@ -58,7 +58,8 @@ int* reduce(int * array , int * maxList, int size){
 // first , second and third elements are the respectively maximum
 //of array in a sorted form.
 int* threeLargetsElement(int* array, int size){
-
+	// initialized elements to zero by asuming inputs will be positive. 
+	// use -INT_MAX for minimum value if negative input will be a test case
 	int* maxList = new int[3]();
 	
 		// iterate thorugh each element and find max of three
